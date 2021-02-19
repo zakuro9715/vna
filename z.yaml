@@ -1,0 +1,2 @@
+tasks:
+  symlink: mkdir -p ~/.vmodules/zakuro9715 && ln -s $(pwd) ~/.vmodules/zakuro9715/vna
