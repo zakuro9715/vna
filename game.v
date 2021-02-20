@@ -40,7 +40,10 @@ pub fn new(c GameConfig) &Game {
 	return game
 }
 
-fn frame(_ &Game) {}
+fn frame(game &Game) {
+	game.gg.begin()
+	game.gg.end()
+}
 
 fn init(_ &Game) {}
 
