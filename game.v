@@ -3,73 +3,85 @@ module vna
 import gg
 import gx
 
-pub struct Game {
-pub mut:
-	ctx     Context
-	objects []GameObject
+pub interface Game {
+	init(ctx &Context)
+	update(ctx &Context)
+	draw(ctx &Context)
+}
+
+pub struct Context {
 mut:
-	gg &gg.Context
+	game       Game
+	gg         &gg.Context
+	cur_title  string
+	cur_width  int
+	cur_height int
+pub mut:
+	title  string
+	width  int
+	height int
 }
 
-pub struct GameConfig {
-	width  int    = 600
-	height int    = 480
-	title  string = 'Game'
+fn (mut ctx Context) on_game_initing() {
 }
 
-pub struct Context {}
+fn (mut ctx Context) on_game_inited() {
+	ctx.cur_title = ctx.title
+	ctx.cur_width = ctx.width
+	ctx.cur_height = ctx.height
+}
 
-pub fn new(c GameConfig) &Game {
-	mut game := &Game{
+fn (mut ctx Context) on_game_updating() {
+}
+
+fn (mut ctx Context) on_game_updated() {
+}
+
+fn (mut ctx Context) on_game_drawing() {
+}
+
+fn (mut ctx Context) on_game_drawed() {
+}
+
+fn frame(mut ctx Context) {
+	ctx.gg.begin()
+
+	ctx.on_game_updating()
+	ctx.game.update(ctx)
+	ctx.on_game_updated()
+
+	ctx.on_game_drawing()
+	ctx.game.draw(ctx)
+	ctx.on_game_drawed()
+
+	ctx.gg.end()
+}
+
+fn init(_ &Context) {
+}
+
+pub fn run(g Game) {
+	mut ctx := &Context{
 		gg: 0
-		ctx: Context{}
 	}
-	game.gg = gg.new_context(
+
+	ctx.on_game_initing()
+	g.init(ctx)
+	ctx.on_game_inited()
+
+	ctx.gg = gg.new_context(
 		bg_color: gx.Color{
 			r: 100
 			g: 149
 			b: 237
 		}
-		width: c.width
-		height: c.height
+		width: ctx.width
+		height: ctx.height
 		create_window: true
-		window_title: c.title
+		window_title: ctx.title
 		frame_fn: frame
 		init_fn: init
-		user_data: game
+		user_data: ctx
 	)
-	return game
-}
-
-pub fn (g &Game) init() {
-	for c in g.objects {
-		c.init(&g.ctx)
-	}
-}
-
-pub fn (g &Game) update() {
-	for c in g.objects {
-		c.update(&g.ctx)
-	}
-}
-
-pub fn (g &Game) draw() {
-	for c in g.objects {
-		c.draw(&g.ctx)
-	}
-}
-
-fn frame(game &Game) {
-	game.gg.begin()
-	game.update()
-	game.draw()
-	game.gg.end()
-}
-
-fn init(game &Game) {
-	game.init()
-}
-
-pub fn (g &Game) run() {
-	g.gg.run()
+	ctx.gg.run()
 }
