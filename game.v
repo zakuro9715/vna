@@ -5,7 +5,8 @@ import gx
 
 pub struct Game {
 pub mut:
-	context Context
+	context    Context
+	components []GameComponent
 mut:
 	gg &gg.Context
 }
@@ -40,12 +41,34 @@ pub fn new(c GameConfig) &Game {
 	return game
 }
 
+pub fn (g &Game) init() {
+	for c in g.components {
+		c.init(&g.context)
+	}
+}
+
+pub fn (g &Game) update() {
+	for c in g.components {
+		c.update(&g.context)
+	}
+}
+
+pub fn (g &Game) draw() {
+	for c in g.components {
+		c.draw(&g.context)
+	}
+}
+
 fn frame(game &Game) {
 	game.gg.begin()
+	game.update()
+	game.draw()
 	game.gg.end()
 }
 
-fn init(_ &Game) {}
+fn init(game &Game) {
+	game.init()
+}
 
 pub fn (g &Game) run() {
 	g.gg.run()
