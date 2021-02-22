@@ -5,7 +5,7 @@ import gx
 
 pub struct Game {
 pub mut:
-	context    Context
+	ctx        Context
 	components []GameComponent
 mut:
 	gg &gg.Context
@@ -22,7 +22,7 @@ pub struct Context {}
 pub fn new(c GameConfig) &Game {
 	mut game := &Game{
 		gg: 0
-		context: Context{}
+		ctx: Context{}
 	}
 	game.gg = gg.new_context(
 		bg_color: gx.Color{
@@ -43,19 +43,19 @@ pub fn new(c GameConfig) &Game {
 
 pub fn (g &Game) init() {
 	for c in g.components {
-		c.init(&g.context)
+		c.init(&g.ctx)
 	}
 }
 
 pub fn (g &Game) update() {
 	for c in g.components {
-		c.update(&g.context)
+		c.update(&g.ctx)
 	}
 }
 
 pub fn (g &Game) draw() {
 	for c in g.components {
-		c.draw(&g.context)
+		c.draw(&g.ctx)
 	}
 }
 
