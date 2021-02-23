@@ -16,8 +16,7 @@ jobs:
         run: |
           git clone --depth=1 https://github.com/vlang/v v && cd v
           make && ./v symlink && cd ..
-      - name: Fmt
-        run:  ./v fmt -verify .
+        run: v fmt -verify .
   test:
     runs-on: ubuntu-latest
     steps:
@@ -26,8 +25,7 @@ jobs:
         run: |
           git clone --depth=1 https://github.com/vlang/v v && cd v
           make && ./v symlink && cd ..
-      - name: Test
-        run: ./v test .
+        run: v test .
   build-examples:
     runs-on: ubuntu-latest
     steps:
@@ -37,4 +35,4 @@ jobs:
           git clone --depth=1 https://github.com/vlang/v v && cd v
           make && ./v symlink && cd ..
       - name: Build examples
-        run: ./v examples/hello_world.v
+        run: v examples/hello_world.v
