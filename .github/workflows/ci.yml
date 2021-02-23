@@ -26,3 +26,13 @@ jobs:
       - uses: actions/checkout@v2
         with: { path: vna }
       - run: ./v test vna
+  build-examples:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with: { repository: vlang/v }
+      - run: make && sudo ./v symlink
+      - uses: actions/checkout@v2
+        with: { path: vna }
+      - uses: zakuro9715/setup-z@main
+      - run: cd vna && z build examples
