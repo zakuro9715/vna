@@ -1,3 +1,3 @@
 tasks:
   symlink: mkdir -p ~/.vmodules/zakuro9715 && ln -s $(pwd) ~/.vmodules/zakuro9715/vna
-  hello_world: v run examples/hello_world.v
+  helloworld: v run examples/hello_world
