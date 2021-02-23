@@ -1,6 +1,13 @@
 tasks:
+  setup: |
+    z symlink
+    sudo apt update -yqq
+    sudo apt -yqq install libxi-dev libxcursor-dev libssl-dev
   symlink: mkdir -p ~/.vmodules/zakuro9715 && ln -s $(pwd) ~/.vmodules/zakuro9715/vna
-  helloworld: v run examples/hello_world
+  helloworld: z run hello_world
+  run:
+    tasks:
+      hello_world: v run examples/hello_world
   build:
     tasks:
       examples: |
