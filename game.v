@@ -3,10 +3,56 @@ module vna
 import gg
 import gx
 
+// pub type Game = GameComponent
 pub interface Game {
 	init(ctx &Context)
 	update(ctx &Context)
 	draw(ctx &Context)
+}
+
+pub interface GameComponent {
+	init(ctx &Context)
+	update(ctx &Context)
+	draw(ctx &Context)
+}
+
+pub struct ComponentManager {
+mut:
+	store map[string]GameComponent
+
+	not_inited_components []&GameComponent
+}
+
+pub fn (mut m ComponentManager) add(name string, c GameComponent) {
+	m.store[name] = c
+	m.not_inited_components << &c
+}
+
+pub fn (m &ComponentManager) get(name string) ?GameComponent {
+	return m.store[name]
+}
+
+pub fn (mut m ComponentManager) init(ctx &Context) {
+	for _, c in m.store {
+		c.init(ctx)
+	}
+	m.not_inited_components = []
+}
+
+pub fn (mut m ComponentManager) update(ctx &Context) {
+	for c in m.not_inited_components {
+		c.init(ctx)
+	}
+	m.not_inited_components = []
+	for _, c in m.store {
+		c.update(ctx)
+	}
+}
+
+pub fn (m &ComponentManager) draw(ctx &Context) {
+	for _, c in m.store {
+		c.draw(ctx)
+	}
 }
 
 pub struct Context {
@@ -17,9 +63,10 @@ mut:
 	cur_width  int
 	cur_height int
 pub mut:
-	title  string
-	width  int
-	height int
+	title      string
+	width      int
+	height     int
+	components ComponentManager
 }
 
 fn (mut ctx Context) on_game_initing() {
@@ -48,10 +95,12 @@ fn frame(mut ctx Context) {
 
 	ctx.on_game_updating()
 	ctx.game.update(ctx)
+	ctx.components.update(ctx)
 	ctx.on_game_updated()
 
 	ctx.on_game_drawing()
 	ctx.game.draw(ctx)
+	ctx.components.draw(ctx)
 	ctx.on_game_drawed()
 
 	ctx.gg.end()
@@ -67,6 +116,7 @@ pub fn run(g Game) {
 
 	ctx.on_game_initing()
 	g.init(ctx)
+	ctx.components.init(ctx)
 	ctx.on_game_inited()
 
 	ctx.gg = gg.new_context(
