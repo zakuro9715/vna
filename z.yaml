@@ -2,7 +2,7 @@ tasks:
   setup: |
     z symlink
     sudo apt update -yqq
-    sudo apt -yqq install libxi-dev libxcursor-dev libssl-dev
+    sudo apt -yqq install libglfw3-dev libasound2-dev libxi-dev libxcursor-dev libssl-dev
   symlink: mkdir -p ~/.vmodules/zakuro9715 && ln -sf $(pwd) ~/.vmodules/zakuro9715/vna
   helloworld: z run hello_world
   run:
