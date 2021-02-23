@@ -35,4 +35,4 @@ jobs:
       - uses: actions/checkout@v2
         with: { path: vna }
       - uses: zakuro9715/setup-z@main
-      - run: cd vna && z symlink && z build examples
+      - run: cd vna && z setup && z build examples
