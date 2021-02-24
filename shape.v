@@ -44,3 +44,7 @@ pub fn (r Rect) top() int {
 pub fn (r Rect) bottom() int {
 	return r.y + r.height
 }
+
+pub fn (r Rect) draw(ctx &Context, color Color) {
+	ctx.gg.draw_rect(r.x, r.y, r.width, r.height, color.to_gx())
+}
