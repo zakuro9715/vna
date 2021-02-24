@@ -1,6 +1,6 @@
 module vna
 
 fn test_color_str() {
-	assert Color{16, 33, 166, 255}.str() == '#1011a6'
-	assert Color{16, 33, 166, 160}.str() == '#1011a6a0'
+	assert Color{0x11, 0x22, 0x33, 0xff}.str() == '#112233'
+	assert Color{0x11, 0x22, 0x33, 0x44}.str() == '#11223344'
 }
