@@ -28,4 +28,6 @@ fn test_rect() {
 	assert rect.bottom() == 8
 	assert rect.left() == 2
 	assert rect.right() == 6
+
+	assert rect.extend(width: 3, height: 4) == Rect{2, 3, 7, 9}
 }
