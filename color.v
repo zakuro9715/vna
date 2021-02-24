@@ -1,5 +1,7 @@
 module vna
 
+import gx
+
 pub struct Color {
 pub:
 	r byte
@@ -14,4 +16,9 @@ pub fn (c Color) str() string {
 	} else {
 		''
 	})
+}
+
+[inline]
+fn (c Color) to_gx() gx.Color {
+	return gx.Color{c.r, c.g, c.b, c.a}
 }
