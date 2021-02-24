@@ -18,7 +18,7 @@ pub fn (mut m ComponentManager) add(name string, c GameComponent) {
 	m.not_inited_components << &c
 }
 
-pub fn (m &ComponentManager) get(name string) ?GameComponent {
+pub fn (m &ComponentManager) find(name string) ?GameComponent {
 	return m.store[name]
 }
 
