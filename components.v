@@ -1,5 +1,8 @@
 module vna
 
+#flag -I @VROOT
+#include "interface_to_struct_ptr.h"
+
 pub interface GameComponent {
 	init(ctx &Context)
 	update(ctx &Context)
@@ -20,6 +23,12 @@ pub fn (mut m ComponentManager) add(name string, c GameComponent) {
 
 pub fn (m &ComponentManager) find(name string) ?GameComponent {
 	return m.store[name]
+}
+
+[unsafe]
+pub fn (m &ComponentManager) find_as<T>(name string) ?&T {
+	obj := m.store[name] or { return none }
+	return unsafe { &T(C.interface_to_struct_ptr(&obj)) }
 }
 
 pub fn (mut m ComponentManager) init(ctx &Context) {
