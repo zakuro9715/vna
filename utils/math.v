@@ -1,4 +1,4 @@
-module math
+module utils
 
 [inline]
 fn max<T>(a T, b T) T {

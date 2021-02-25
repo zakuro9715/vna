@@ -1,4 +1,4 @@
-module math
+module utils
 
 fn test_min_max() {
 	assert min(0, 1) == 0
