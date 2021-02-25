@@ -33,10 +33,13 @@ fn test_vec2() {
 	assert Vec2{-4, -3}.length() == 5
 
 	mut v := Vec2{4, 4}
+	assert !v.is_normalized()
 	assert eps_eq(v.normalized().length(), 1)
+	assert v.normalized().is_normalized()
 	assert v.normalized().x == v.normalized().y
 	v.normalize()
 	assert eps_eq(v.length(), 1)
+	assert v.is_normalized()
 	assert v.x == v.y
 
 	v = Vec2{1, 2}

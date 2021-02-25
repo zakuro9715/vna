@@ -1,6 +1,6 @@
 module vna
 
-import fmath { sqrt }
+import fmath { eps_eq, sqrt }
 
 pub struct Vec2 {
 pub mut:
@@ -69,6 +69,10 @@ pub fn (mut v Vec2) normalize() {
 
 pub fn (v Vec2) normalized() Vec2 {
 	return v.mul(v.length_inversed())
+}
+
+pub fn (v Vec2) is_normalized() bool {
+	return eps_eq(v.length_squared(), 1)
 }
 
 pub fn (v Vec2) length_squared() f32 {
