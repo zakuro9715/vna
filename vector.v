@@ -56,6 +56,10 @@ pub fn (v Vec2) negative() Vec2 {
 	return v.mul(-1)
 }
 
+pub fn (v Vec2) normalized() Vec2 {
+	return v.mul(v.length_inversed())
+}
+
 pub fn (v Vec2) length_squared() f32 {
 	return v.x * v.x + v.y * v.y
 }
