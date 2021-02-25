@@ -20,3 +20,8 @@ fn test_rgba() {
 	c2 := hex_a(0x01020304)
 	assert c2 == c
 }
+
+fn test_colors() {
+	assert white == rgba(255, 255, 255, 255)
+	assert transparent == rgba(255, 255, 255, 0)
+}
