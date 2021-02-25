@@ -1,5 +1,7 @@
 module vna
 
+import fmath { sqrt }
+
 pub struct Vec2 {
 pub:
 	x f32
@@ -28,4 +30,12 @@ pub fn (lhs Vec2) div(rhs f32) Vec2 {
 
 pub fn (v Vec2) negative() Vec2 {
 	return v.mul(-1)
+}
+
+pub fn (v Vec2) length_squared() f32 {
+	return v.x * v.x + v.y * v.y
+}
+
+pub fn (v Vec2) length() f32 {
+	return sqrt(v.length_squared())
 }
