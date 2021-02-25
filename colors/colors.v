@@ -10,7 +10,7 @@ pub fn rgba(r byte, g byte, b byte, a byte) Color {
 	return Color{r, g, b, a}
 }
 
-pub fn rgb_hex(color u32) Color {
+pub fn hex(color u32) Color {
 	return Color{
 		r: byte(color >> 16)
 		g: byte(color >> 8)
@@ -18,7 +18,7 @@ pub fn rgb_hex(color u32) Color {
 	}
 }
 
-pub fn rgba_hex(color u32) Color {
+pub fn hex_a(color u32) Color {
 	return Color{
 		r: byte(color >> 24)
 		g: byte(color >> 16)
