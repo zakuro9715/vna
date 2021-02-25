@@ -10,6 +10,10 @@ pub mut:
 	a byte = 255
 }
 
+pub fn (c &Color) opacity() f32 {
+	return f32(c.a) / f32(255)
+}
+
 pub fn (c Color) str() string {
 	return '#$c.r.hex()$c.g.hex()$c.b.hex()' + (if c.a < 255 {
 		c.a.hex()
