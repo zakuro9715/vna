@@ -3,7 +3,7 @@ module vna
 import gx
 
 pub struct Color {
-pub:
+pub mut:
 	r byte
 	g byte
 	b byte
