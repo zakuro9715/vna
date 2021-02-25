@@ -19,3 +19,11 @@ pub fn min<T>(a T, b T) T {
 	}
 	return b
 }
+
+[inline]
+pub fn abs<T>(v T) T {
+	if v < 0 {
+		return -v
+	}
+	return v
+}
