@@ -3,7 +3,7 @@ module vna
 import fmath { sqrt }
 
 pub struct Vec2 {
-pub:
+pub mut:
 	x f32
 	y f32
 }
