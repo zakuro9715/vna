@@ -7,6 +7,11 @@ pub const (
 )
 
 [inline]
+pub fn eps_eq(lhs f32, rhs f32) bool {
+	return abs(lhs - rhs) < fmath.eps
+}
+
+[inline]
 pub fn cos(v f32) f32 {
 	return math.cosf(v)
 }
