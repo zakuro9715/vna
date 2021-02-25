@@ -63,3 +63,11 @@ pub fn (v Vec2) length_squared() f32 {
 pub fn (v Vec2) length() f32 {
 	return sqrt(v.length_squared())
 }
+
+pub fn (v Vec2) distance_from_squared(from Vec2) f32 {
+	return (from - v).length_squared()
+}
+
+pub fn (v Vec2) distance_from(from Vec2) f32 {
+	return (from - v).length()
+}

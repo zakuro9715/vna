@@ -28,4 +28,7 @@ fn test_vec2() {
 	assert Vec2{4, -3}.length() == 5
 	assert Vec2{-4, -3}.length_squared() == 25
 	assert Vec2{-4, -3}.length() == 5
+
+	assert Vec2{5, 4}.distance_from_squared(Vec2{1, 1}) == 25
+	assert Vec2{5., 4}.distance_from(Vec2{1, 1}) == 5
 }
