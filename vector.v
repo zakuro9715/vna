@@ -44,6 +44,14 @@ pub fn (lhs Vec2) div(rhs f32) Vec2 {
 	return Vec2{lhs.x / rhs, lhs.y / rhs}
 }
 
+pub fn (lhs Vec2) dot(rhs Vec2) f32 {
+	return lhs.x * rhs.x + lhs.y * rhs.y
+}
+
+pub fn (lhs Vec2) cross(rhs Vec2) f32 {
+	return lhs.x * rhs.y - lhs.y * rhs.x
+}
+
 pub fn (v Vec2) negative() Vec2 {
 	return v.mul(-1)
 }
