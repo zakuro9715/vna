@@ -52,6 +52,14 @@ pub fn (lhs Vec2) cross(rhs Vec2) f32 {
 	return lhs.x * rhs.y - lhs.y * rhs.x
 }
 
+pub fn (mut v Vec2) inverse() {
+	v = v.inversed()
+}
+
+pub fn (v Vec2) inversed() Vec2 {
+	return v.mul(-1)
+}
+
 pub fn (mut v Vec2) normalize() {
 	v = v.normalized()
 }

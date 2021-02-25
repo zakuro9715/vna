@@ -39,6 +39,11 @@ fn test_vec2() {
 	assert eps_eq(v.length(), 1)
 	assert v.x == v.y
 
+	v = Vec2{1, 2}
+	assert v.inversed() == Vec2{-1, -2}
+	v.inverse()
+	assert v == Vec2{-1, -2}
+
 	assert Vec2{5, 4}.distance_from_squared(Vec2{1, 1}) == 25
 	assert Vec2{5., 4}.distance_from(Vec2{1, 1}) == 5
 }
