@@ -16,6 +16,11 @@ pub enum Transparency {
 	transparent
 }
 
+pub enum GrayscaleMode {
+	default
+	bt601
+}
+
 pub fn (c &Color) opacity() f32 {
 	return f32(c.a) / f32(255)
 }
@@ -25,6 +30,14 @@ pub fn (c &Color) transparency() Transparency {
 		0 { return .transparent }
 		255 { return .opaque }
 		else { return .translucent }
+	}
+}
+
+pub fn (c &Color) grayscale(mode GrayscaleMode) f32 {
+	return match mode {
+		.default, .bt601 {
+			(0.299 * f32(c.r) / 255.0) + (0.587 * f32(c.g) / 255.0) + (0.114 * f32(c.b) / 255.0)
+		}
 	}
 }
 
