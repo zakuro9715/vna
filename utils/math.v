@@ -1,5 +1,9 @@
 module utils
 
+pub const (
+	eps = 0.00000001
+)
+
 [inline]
 pub fn max<T>(a T, b T) T {
 	if a > b {
