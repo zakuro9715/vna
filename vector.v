@@ -61,6 +61,19 @@ pub fn (v Vec2) inversed() Vec2 {
 	return v.mul(-1)
 }
 
+pub fn (mut v Vec2) reflect(normal Vec2) {
+	n_normal := if normal.is_normalized() { normal } else { normal.normalized() }
+	dot := v.dot(n_normal)
+	v.x = v.x - ((2 * dot) * n_normal.x)
+	v.y = v.y - ((2 * dot) * n_normal.y)
+}
+
+pub fn (v Vec2) reflected(normal Vec2) Vec2 {
+	mut res := v
+	res.reflect(normal)
+	return res
+}
+
 pub fn (mut v Vec2) normalize() {
 	lv := v.length_inversed()
 	v.x *= lv

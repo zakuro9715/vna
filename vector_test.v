@@ -47,6 +47,12 @@ fn test_vec2() {
 	v.inverse()
 	assert v == Vec2{-1, -2}
 
+	v = Vec2{1, 2}
+	assert v.reflected(x: -1, y: 0) == Vec2{-1, 2}
+	assert v.reflected(x: 0, y: -1) == Vec2{1, -2}
+	assert v.reflected(x: -1, y: -2) == Vec2{-1, -2}
+	assert v == Vec2{1, 2}
+
 	assert Vec2{5, 4}.distance_from_squared(Vec2{1, 1}) == 25
 	assert Vec2{5., 4}.distance_from(Vec2{1, 1}) == 5
 }
