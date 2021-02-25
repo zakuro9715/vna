@@ -53,7 +53,8 @@ pub fn (lhs Vec2) cross(rhs Vec2) f32 {
 }
 
 pub fn (mut v Vec2) inverse() {
-	v = v.inversed()
+	v.x *= -1
+	v.y *= -1
 }
 
 pub fn (v Vec2) inversed() Vec2 {
@@ -61,7 +62,9 @@ pub fn (v Vec2) inversed() Vec2 {
 }
 
 pub fn (mut v Vec2) normalize() {
-	v = v.normalized()
+	lv := v.length_inversed()
+	v.x *= lv
+	v.y *= lv
 }
 
 pub fn (v Vec2) normalized() Vec2 {
