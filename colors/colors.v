@@ -28,7 +28,8 @@ pub fn hex_a(color u32) Color {
 }
 
 pub const (
-	red   = hex(0xff0000)
-	green = hex(0x00ff00)
-	blue  = hex(0x0000ff)
+	red    = hex(0xff0000)
+	green  = hex(0x00ff00)
+	blue   = hex(0x0000ff)
+	yellow = hex(0xffff00)
 )
