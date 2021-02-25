@@ -17,7 +17,6 @@ fn test_vec2() {
 	assert Vec2{1, 2}.sub(1) == Vec2{0, 1}
 	assert Vec2{1, 2}.mul(1.5) == Vec2{1.5, 3}
 	assert Vec2{1.5, 3}.div(1.5) == Vec2{1, 2}
-	assert Vec2{1, 2}.negative() == Vec2{-1, -2}
 
 	assert Vec2{2, 3}.dot(Vec2{3, 4}) == 18
 	assert Vec2{2, 3}.cross(Vec2{3, 4}) == -1
