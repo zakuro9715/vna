@@ -56,3 +56,8 @@ fn test_vec2() {
 	assert Vec2{5, 4}.distance_from_squared(Vec2{1, 1}) == 25
 	assert Vec2{5., 4}.distance_from(Vec2{1, 1}) == 5
 }
+
+fn test_vec2_unit() {
+	assert unit_x<Vec2>() == Vec2{1, 0}
+	assert unit_y<Vec2>() == Vec2{0, 1}
+}
