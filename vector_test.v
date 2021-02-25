@@ -1,6 +1,6 @@
 module vna
 
-import utils { abs, eps }
+import fmath { abs, eps }
 
 fn test_vec2() {
 	assert Vec2{0, 0}.is_zero()
