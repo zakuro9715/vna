@@ -10,8 +10,22 @@ pub mut:
 	a byte = 255
 }
 
+pub enum Transparency {
+	opaque
+	translucent
+	transparent
+}
+
 pub fn (c &Color) opacity() f32 {
 	return f32(c.a) / f32(255)
+}
+
+pub fn (c &Color) transparency() Transparency {
+	match c.a {
+		0 { return .transparent }
+		255 { return .opaque }
+		else { return .translucent }
+	}
 }
 
 pub fn (c Color) str() string {

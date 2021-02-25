@@ -15,6 +15,14 @@ fn test_opacity() {
 	assert opacity > 0.4
 }
 
+fn test_tranparency() {
+	assert Color{0, 0, 0, 0}.transparency() == .transparent
+	assert Color{0, 0, 0, 1}.transparency() == .translucent
+	assert Color{0, 0, 0, 127}.transparency() == .translucent
+	assert Color{0, 0, 0, 254}.transparency() == .translucent
+	assert Color{0, 0, 0, 255}.transparency() == .opaque
+}
+
 fn test_color_to_gx() {
 	assert (Color{1, 2, 3, 4}).to_gx() == gx.Color{1, 2, 3, 4}
 }
