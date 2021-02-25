@@ -1,6 +1,6 @@
 module vna
 
-import fmath { abs, eps }
+import fmath { eps_eq }
 
 fn test_vec2() {
 	assert Vec2{0, 0}.is_zero()
@@ -34,7 +34,7 @@ fn test_vec2() {
 	assert Vec2{-4, -3}.length() == 5
 
 	mut v := Vec2{4, 4}
-	assert abs(v.normalized().length_squared() - 1) > eps
+	assert eps_eq(v.normalized().length(), 1)
 	assert v.normalized().x == v.normalized().y
 
 	assert Vec2{5, 4}.distance_from_squared(Vec2{1, 1}) == 25
