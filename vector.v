@@ -56,6 +56,10 @@ pub fn (v Vec2) negative() Vec2 {
 	return v.mul(-1)
 }
 
+pub fn (mut v Vec2) normalize() {
+	v = v.normalized()
+}
+
 pub fn (v Vec2) normalized() Vec2 {
 	return v.mul(v.length_inversed())
 }

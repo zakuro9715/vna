@@ -36,6 +36,9 @@ fn test_vec2() {
 	mut v := Vec2{4, 4}
 	assert eps_eq(v.normalized().length(), 1)
 	assert v.normalized().x == v.normalized().y
+	v.normalize()
+	assert eps_eq(v.length(), 1)
+	assert v.x == v.y
 
 	assert Vec2{5, 4}.distance_from_squared(Vec2{1, 1}) == 25
 	assert Vec2{5., 4}.distance_from(Vec2{1, 1}) == 5
