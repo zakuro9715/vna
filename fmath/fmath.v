@@ -3,7 +3,7 @@ module fmath
 import math
 
 pub const (
-	eps = f32(0.00000001)
+	eps = f32(0.00001)
 )
 
 [inline]
