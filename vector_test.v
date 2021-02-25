@@ -22,6 +22,8 @@ fn test_vec2() {
 
 	assert Vec2{4, 3}.length_squared() == 25
 	assert Vec2{4, 3}.length() == 5
+	assert Vec2{4, 3}.length_inversed() * Vec2{4, 3}.length() == 1
+
 	assert Vec2{-4, 3}.length_squared() == 25
 	assert Vec2{-4, 3}.length() == 5
 	assert Vec2{4, -3}.length_squared() == 25
